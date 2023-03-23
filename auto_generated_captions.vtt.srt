@@ -1,0 +1,3679 @@
+1
+00:00:00,200 --> 00:00:03,100
+Today's speaker is Xavier Marshall who's a Coke terminal student
+
+2
+00:00:03,100 --> 00:00:04,900
+in the perception in action lab.
+
+3
+00:00:05,300 --> 00:00:05,600
+and this is a
+
+4
+00:00:06,300 --> 00:00:07,600
+project that is based on.
+
+5
+00:00:08,700 --> 00:00:11,400
+His master. Well, his master's project this title the
+
+6
+00:00:11,400 --> 00:00:15,200
+new tool for visualization of gays data in 3D
+
+7
+00:00:14,200 --> 00:00:17,900
+virtual environments the unity playbacks
+
+8
+00:00:17,900 --> 00:00:19,800
+system Suite Suites. Yes.
+
+9
+00:00:21,100 --> 00:00:21,700
+Branding is fun.
+
+10
+00:00:25,700 --> 00:00:27,300
+All right, that includes my presentation.
+
+11
+00:00:28,500 --> 00:00:31,400
+So yeah, as Brett said this will
+
+12
+00:00:31,400 --> 00:00:35,300
+working on so to maybe add some clarity to
+
+13
+00:00:34,300 --> 00:00:38,500
+what is a kind of messy title. Essentially when
+
+14
+00:00:38,500 --> 00:00:41,300
+I'm working on here is a plug-in for Unity that will allow
+
+15
+00:00:41,300 --> 00:00:44,500
+experimenters to create sort of
+
+16
+00:00:44,500 --> 00:00:47,700
+frame by frame playbacks of their virtual environments. So
+
+17
+00:00:47,700 --> 00:00:50,300
+the behavior that you end up getting is going to end up very similar to
+
+18
+00:00:50,300 --> 00:00:53,700
+a video player and we'll explore that later. But first let's kind
+
+19
+00:00:53,700 --> 00:00:54,900
+of get into the background a little bit.
+
+20
+00:00:55,700 --> 00:00:58,700
+So I want to talk generally about the landscape of virtual
+
+21
+00:00:58,700 --> 00:01:01,600
+reality eye tracking and simulated
+
+22
+00:01:01,600 --> 00:01:04,400
+environments in general right sort of
+
+23
+00:01:04,400 --> 00:01:08,300
+to create a lead-up to why we've made this so speaking
+
+24
+00:01:07,300 --> 00:01:11,100
+generally game engines have become a really
+
+25
+00:01:10,100 --> 00:01:13,400
+ubiquitous and really accessible tool for
+
+26
+00:01:13,400 --> 00:01:16,200
+creating experiments rapidly, especially within
+
+27
+00:01:16,200 --> 00:01:18,400
+the field of human behavior.
+
+28
+00:01:20,300 --> 00:01:23,300
+So alongside that we've also had really great
+
+29
+00:01:23,300 --> 00:01:26,400
+increases in the portability of virtual reality
+
+30
+00:01:26,400 --> 00:01:29,500
+the accuracy and reliability of eye trackers and
+
+31
+00:01:29,500 --> 00:01:32,700
+the ability to kind of combine all of these different experimental paradigms
+
+32
+00:01:32,700 --> 00:01:35,500
+together, which has been really really great but
+
+33
+00:01:35,500 --> 00:01:38,600
+also comes with a few problems as these experiments become
+
+34
+00:01:38,600 --> 00:01:39,200
+more common.
+
+35
+00:01:39,900 --> 00:01:42,100
+So first starters, this is just inherent to gaze data
+
+36
+00:01:42,100 --> 00:01:45,600
+in general. It is noisy. It is difficult to interpret and it's
+
+37
+00:01:45,600 --> 00:01:48,800
+even worse when you're dealing with naturalistic studies
+
+38
+00:01:48,800 --> 00:01:51,700
+that have complex environments
+
+39
+00:01:51,700 --> 00:01:54,200
+lots of visual clutter things of that
+
+40
+00:01:54,200 --> 00:01:57,300
+nature that really complicate your scene and make it difficult to
+
+41
+00:01:57,300 --> 00:02:00,200
+Intuit. What's happening based off
+
+42
+00:02:00,200 --> 00:02:02,600
+of just a sort of a glance at the data.
+
+43
+00:02:03,800 --> 00:02:07,600
+Which is why we want to sort of add more potent
+
+44
+00:02:06,600 --> 00:02:08,400
+visualizations to it.
+
+45
+00:02:09,500 --> 00:02:12,500
+Alongside that we have just this broader open source
+
+46
+00:02:12,500 --> 00:02:15,200
+landscape that kind of surrounds Unity, which is honestly really really
+
+47
+00:02:15,200 --> 00:02:18,500
+great in robust, but lacking in one core way and
+
+48
+00:02:18,500 --> 00:02:21,800
+that's the ability that it has to sort of Aid researchers
+
+49
+00:02:21,800 --> 00:02:24,400
+and their data analysis. There are
+
+50
+00:02:24,400 --> 00:02:28,000
+plenty of tools that are really great for like data collection experiment formatting
+
+51
+00:02:27,900 --> 00:02:31,000
+assets that make replicating
+
+52
+00:02:30,300 --> 00:02:34,200
+certain experimental to paradigms very easy, but data analysis
+
+53
+00:02:34,200 --> 00:02:37,700
+is incredibly under explored within the open source Unity community and
+
+54
+00:02:37,700 --> 00:02:40,600
+that's where I'd like to sort of settle in a little bit and bolster.
+
+55
+00:02:41,800 --> 00:02:44,200
+And so again, let's get back
+
+56
+00:02:44,200 --> 00:02:47,300
+to the unity playback Suites a system
+
+57
+00:02:47,300 --> 00:02:50,500
+many different names. I'll probably
+
+58
+00:02:50,500 --> 00:02:53,300
+call it the playback Suite from here on but again, it's that
+
+59
+00:02:53,300 --> 00:02:57,300
+open source toolkit that gets you frame by frame replays of
+
+60
+00:02:56,300 --> 00:02:59,500
+your experimental trials, right? And
+
+61
+00:02:59,500 --> 00:03:02,400
+so in order to do this, we create essentially a carbon copy
+
+62
+00:03:02,400 --> 00:03:05,500
+of replica of your experimental environments and within
+
+63
+00:03:05,500 --> 00:03:08,200
+that you can start, you know, constructing your
+
+64
+00:03:08,200 --> 00:03:11,700
+own custom 3D visualizations, you can
+
+65
+00:03:11,700 --> 00:03:14,100
+export additional data import data that was not
+
+66
+00:03:14,100 --> 00:03:17,900
+originally recorded while in unity as well
+
+67
+00:03:17,900 --> 00:03:20,200
+as a few other things. And so we want to try to make this
+
+68
+00:03:20,200 --> 00:03:23,300
+a very kind of extensible engineeric tool that can be provided that
+
+69
+00:03:23,300 --> 00:03:27,800
+can be utilized in any kind of research so
+
+70
+00:03:26,800 --> 00:03:29,800
+long as it's kind of fundamentally compatible
+
+71
+00:03:29,800 --> 00:03:32,900
+with the playback Suite similarly. We
+
+72
+00:03:32,900 --> 00:03:36,100
+kind of want this to really focus on leveraging the
+
+73
+00:03:35,100 --> 00:03:38,500
+the robust power that Unity has to offer as
+
+74
+00:03:38,500 --> 00:03:41,700
+a 3D game engine which are incredible at rendering
+
+75
+00:03:41,800 --> 00:03:45,400
+graphics and processing that information with Incredible
+
+76
+00:03:44,400 --> 00:03:47,300
+ease the apis that are
+
+77
+00:03:47,300 --> 00:03:50,400
+included honestly take care of so much work that if you're maybe
+
+78
+00:03:50,400 --> 00:03:53,300
+in the field computer vision would have to kind of reconstruct from the ground
+
+79
+00:03:53,300 --> 00:03:54,800
+up if you only had video
+
+80
+00:03:56,300 --> 00:03:56,700
+Go ahead.
+
+81
+00:04:09,800 --> 00:04:10,700
+Yeah, so we
+
+82
+00:04:13,700 --> 00:04:16,300
+that that's one part of it. So we
+
+83
+00:04:16,300 --> 00:04:19,300
+try to go beyond simply overlays. You'll kind
+
+84
+00:04:19,300 --> 00:04:22,300
+of see as we go forward as I talk more about sort of the the features that expand
+
+85
+00:04:22,300 --> 00:04:25,200
+beyond that, but what's really interesting about
+
+86
+00:04:25,200 --> 00:04:28,600
+this is that you can because you can bring your data back into a reconstructed scene.
+
+87
+00:04:28,600 --> 00:04:31,600
+You have multiple different camera perspectives that render
+
+88
+00:04:31,600 --> 00:04:34,800
+your data from from different angles that visualize
+
+89
+00:04:34,800 --> 00:04:37,200
+it in different ways. And so you can yeah just
+
+90
+00:04:37,200 --> 00:04:40,200
+do those simple overlays and you'll see some but then you're also going
+
+91
+00:04:40,200 --> 00:04:44,100
+to see kind of a little bit beyond that so we
+
+92
+00:04:43,100 --> 00:04:46,200
+will get into that. Hope you're excited.
+
+93
+00:04:48,700 --> 00:04:51,300
+So for now I just want to do a quick overview of the the content.
+
+94
+00:04:51,300 --> 00:04:54,800
+We're going to cover throughout this presentation. So first
+
+95
+00:04:54,800 --> 00:04:57,900
+things first, I want to review some very basic terminology and
+
+96
+00:04:57,900 --> 00:05:00,200
+principles within Unity so that we
+
+97
+00:05:00,200 --> 00:05:03,400
+all have a good kind of Baseline understanding of what we describing here.
+
+98
+00:05:03,400 --> 00:05:06,400
+Then I'm going to go into the unity
+
+99
+00:05:06,400 --> 00:05:09,700
+playback Suites. It's features. It's sort of design mentality
+
+100
+00:05:09,700 --> 00:05:11,900
+how we landed where we are today?
+
+101
+00:05:12,900 --> 00:05:15,200
+And then I'm going to kind of walk through how to integrate
+
+102
+00:05:15,200 --> 00:05:18,100
+upbs into a very simple sort of
+
+103
+00:05:18,100 --> 00:05:21,100
+mock simulation. So that way you kind of know the basics of
+
+104
+00:05:21,100 --> 00:05:24,300
+all the steps in order to get integrated and kind of understand how this tool
+
+105
+00:05:24,300 --> 00:05:27,700
+works. Then we're going to dive a little bit into to case
+
+106
+00:05:27,700 --> 00:05:30,200
+study experiments that will kind of
+
+107
+00:05:30,200 --> 00:05:33,900
+go more in depth about the applications of these features as
+
+108
+00:05:33,900 --> 00:05:36,300
+well as gesture toward the next steps for the development
+
+109
+00:05:36,300 --> 00:05:38,700
+of the software seeing as it's only February.
+
+110
+00:05:40,100 --> 00:05:41,300
+so to start
+
+111
+00:05:42,300 --> 00:05:45,600
+you need primer we have scenes. So
+
+112
+00:05:45,600 --> 00:05:48,600
+a scene in unity is simply your blank
+
+113
+00:05:48,600 --> 00:05:51,300
+canvas. It is a 3D environment that contains all of
+
+114
+00:05:51,300 --> 00:05:54,000
+your game objects and So within the scene
+
+115
+00:05:54,900 --> 00:05:59,100
+Are the game objects now these represent characters their
+
+116
+00:05:57,100 --> 00:06:00,900
+props? They can be scenery. They
+
+117
+00:06:00,900 --> 00:06:03,600
+can also be environmental State information. There's
+
+118
+00:06:03,600 --> 00:06:07,300
+all kinds of data that can be stored Within game
+
+119
+00:06:06,300 --> 00:06:09,600
+objects. And so you'll kind of see here this
+
+120
+00:06:09,600 --> 00:06:12,100
+image on left hand side of a panel that you need
+
+121
+00:06:12,100 --> 00:06:15,200
+generates sort of depicting all your game objects when this within the scene
+
+122
+00:06:15,200 --> 00:06:18,100
+as well as in the right hand side that same scene. I showed
+
+123
+00:06:18,100 --> 00:06:22,000
+in that early image now populated with game objects. One
+
+124
+00:06:21,200 --> 00:06:24,600
+thing you'll know is that there are more objects detail
+
+125
+00:06:24,600 --> 00:06:27,200
+on the left hand side. This is because Unity has a lot more data on
+
+126
+00:06:27,200 --> 00:06:30,100
+the back end but the playback Suite is only concerned with
+
+127
+00:06:30,100 --> 00:06:33,600
+the visual stimulus. That's the stuff. We want to try to replicate when we
+
+128
+00:06:33,600 --> 00:06:35,500
+create our copy of your scene.
+
+129
+00:06:37,300 --> 00:06:40,400
+Moving on from there. We have components which are just modular pieces
+
+130
+00:06:40,400 --> 00:06:43,800
+of behavior sort of exposed to Unity. You can
+
+131
+00:06:43,800 --> 00:06:46,500
+you can apply these behaviors onto different
+
+132
+00:06:46,500 --> 00:06:49,700
+game objects and multitude or different configurations
+
+133
+00:06:49,700 --> 00:06:52,600
+and those behaviors are defined by
+
+134
+00:06:52,600 --> 00:06:55,400
+scripts which are just a little chunks of c-sharp code or very
+
+135
+00:06:55,400 --> 00:06:58,200
+large chunks depending on how you're feeling that
+
+136
+00:06:58,200 --> 00:06:58,400
+day.
+
+137
+00:07:00,400 --> 00:07:00,600
+So
+
+138
+00:07:01,200 --> 00:07:04,500
+with that out of the way, we're going to talk a little bit about the design principles and
+
+139
+00:07:04,500 --> 00:07:07,400
+the playback Suite so really want
+
+140
+00:07:07,400 --> 00:07:10,700
+to emphasize again like this being open source drive
+
+141
+00:07:10,700 --> 00:07:14,100
+so much of the trajectory of this project every design
+
+142
+00:07:13,100 --> 00:07:17,100
+decision every every feature
+
+143
+00:07:16,100 --> 00:07:18,100
+that we add every
+
+144
+00:07:19,700 --> 00:07:22,200
+every line of code that gets written a sort of filtered through
+
+145
+00:07:22,200 --> 00:07:25,500
+this lens of needing to be perfectly as workable as
+
+146
+00:07:25,500 --> 00:07:29,100
+possible to somebody who's unfamiliar with the code and as
+
+147
+00:07:28,100 --> 00:07:31,300
+simple and straightforward as it
+
+148
+00:07:31,300 --> 00:07:35,200
+can be we really want this to be kind of maximally accessible to non-programmers
+
+149
+00:07:34,200 --> 00:07:37,600
+or very inexperienced Unity programmers
+
+150
+00:07:37,600 --> 00:07:40,400
+the kind of thing that you can hand to an undergraduate maybe in their
+
+151
+00:07:40,400 --> 00:07:43,200
+first or second semester and within weeks they can probably pick
+
+152
+00:07:43,200 --> 00:07:45,900
+it up. That's what we're looking to go for here.
+
+153
+00:07:46,800 --> 00:07:49,800
+We know that analysis can take a wide wide
+
+154
+00:07:49,800 --> 00:07:52,400
+variety of different forms across different experiments and there's
+
+155
+00:07:52,400 --> 00:07:55,600
+no way to like properly standardize like what analyzes
+
+156
+00:07:55,600 --> 00:07:58,600
+you want to find we can't standardize this framework and
+
+157
+00:07:58,600 --> 00:08:01,200
+we can make it as extensible as possible. So that way
+
+158
+00:08:01,200 --> 00:08:04,100
+any analyzes that you're interested in adding will be
+
+159
+00:08:04,100 --> 00:08:04,600
+presents.
+
+160
+00:08:05,200 --> 00:08:06,600
+and finally
+
+161
+00:08:07,500 --> 00:08:10,800
+Onto the more onto the topic of standardization. We
+
+162
+00:08:10,800 --> 00:08:13,300
+have a tool called the unity experiment
+
+163
+00:08:13,300 --> 00:08:16,700
+framework that I want to describe and go a little bit into because the
+
+164
+00:08:16,700 --> 00:08:19,500
+way this tool works is actually pivotal to the operation
+
+165
+00:08:19,500 --> 00:08:22,200
+of the playback speeds and this where it
+
+166
+00:08:22,200 --> 00:08:25,300
+gets maybe a little bit complicated. So feel free to slow me
+
+167
+00:08:25,300 --> 00:08:26,000
+down if need be
+
+168
+00:08:26,700 --> 00:08:30,600
+All right. So the unity experiment framework handles
+
+169
+00:08:29,600 --> 00:08:32,300
+the entirety of the data
+
+170
+00:08:32,300 --> 00:08:35,700
+collection for simulation compatible with
+
+171
+00:08:35,700 --> 00:08:38,500
+the playback Suite. So what it
+
+172
+00:08:38,500 --> 00:08:41,800
+does is it basically standardizes your data formatting ensures consistent
+
+173
+00:08:41,800 --> 00:08:45,500
+data recording it's widely
+
+174
+00:08:45,500 --> 00:08:48,200
+used. It's open source and genuinely, I would
+
+175
+00:08:48,200 --> 00:08:52,200
+consider it sort of a non-brainer to use in unity
+
+176
+00:08:51,200 --> 00:08:54,900
+simulations because it's so potent
+
+177
+00:08:54,900 --> 00:08:57,100
+and and so
+
+178
+00:08:57,100 --> 00:09:00,800
+it works so well to record your data. It's kind
+
+179
+00:09:00,800 --> 00:09:03,100
+of handle that boilerplate stuff that you have
+
+180
+00:09:03,100 --> 00:09:06,600
+to do a cross experiments and I want to go a little bit more into the unity
+
+181
+00:09:06,600 --> 00:09:10,300
+experiment framework and how that works that will
+
+182
+00:09:10,300 --> 00:09:13,300
+lead sort of into the setup for the playback Suites. All right.
+
+183
+00:09:14,200 --> 00:09:18,300
+So the unique experiment framework collects stimulus
+
+184
+00:09:17,300 --> 00:09:20,800
+and experiment State data using something called trackers.
+
+185
+00:09:20,800 --> 00:09:23,400
+These are components that you define via scripts
+
+186
+00:09:23,400 --> 00:09:26,400
+and you attach the game objects. Once they are
+
+187
+00:09:26,400 --> 00:09:30,300
+attach the game object. You'll get all kinds of data recorded based on
+
+188
+00:09:30,300 --> 00:09:33,300
+what you define, right? That's sort
+
+189
+00:09:33,300 --> 00:09:36,300
+of the the main squeeze of UXF. That's what
+
+190
+00:09:36,300 --> 00:09:39,900
+you want to be up. That's where we're going to be working with most directly and those
+
+191
+00:09:39,900 --> 00:09:42,100
+trackers are going to play a key role in how we
+
+192
+00:09:42,100 --> 00:09:43,700
+replicate your environments.
+
+193
+00:09:45,400 --> 00:09:49,000
+UXF also offers us the ability to organize their
+
+194
+00:09:48,300 --> 00:09:52,200
+experiments in a very standardized way and it
+
+195
+00:09:51,200 --> 00:09:54,900
+really is great for like allowing us to track the the
+
+196
+00:09:54,900 --> 00:09:57,300
+data we collect on participants. So you kind
+
+197
+00:09:57,300 --> 00:10:00,200
+of see by this diagram it can divide your experiment based off
+
+198
+00:10:00,200 --> 00:10:03,700
+some configuration into different sessions for every participants
+
+199
+00:10:03,700 --> 00:10:06,200
+upon which you can split it up up more
+
+200
+00:10:06,200 --> 00:10:09,400
+into blocks, which are just really chunks of
+
+201
+00:10:09,400 --> 00:10:13,600
+meaningfully different trials for your experiments all
+
+202
+00:10:12,600 --> 00:10:15,300
+this is globally available State information
+
+203
+00:10:15,300 --> 00:10:17,600
+and again,
+
+204
+00:10:18,900 --> 00:10:21,100
+Useful for the playback Suite go ahead.
+
+205
+00:10:21,100 --> 00:10:25,000
+Yes.
+
+206
+00:10:26,400 --> 00:10:27,100
+yeah, so actually
+
+207
+00:10:29,400 --> 00:10:33,500
+Yeah, I'll probably go into that. But I can use this one right here to explain
+
+208
+00:10:32,500 --> 00:10:35,300
+that more clearly. So for example,
+
+209
+00:10:35,300 --> 00:10:39,300
+I have this this tracker here which is
+
+210
+00:10:39,300 --> 00:10:42,500
+just for kind of maintaining the the camera. Now this doesn't
+
+211
+00:10:42,500 --> 00:10:46,000
+show much of the scripting but you can kind of see has a
+
+212
+00:10:45,500 --> 00:10:48,600
+few parameters here for different pieces of data including the
+
+213
+00:10:48,600 --> 00:10:51,400
+headers that go into your file a descriptor the name
+
+214
+00:10:51,400 --> 00:10:54,300
+of the file and then I think as I move forward I'm
+
+215
+00:10:54,300 --> 00:10:58,300
+going to kind of go into the way the code is sort of operating to
+
+216
+00:10:57,300 --> 00:10:59,700
+get data into that tracker.
+
+217
+00:11:01,300 --> 00:11:06,200
+Massage you had a question maybe MIT open
+
+218
+00:11:05,200 --> 00:11:06,500
+source.
+
+219
+00:11:07,500 --> 00:11:07,700
+Yes.
+
+220
+00:11:11,800 --> 00:11:14,400
+So yeah, there are a few challenges to getting something like
+
+221
+00:11:14,400 --> 00:11:15,700
+the playback Suite up and running.
+
+222
+00:11:16,900 --> 00:11:19,300
+Um, so kind of as you
+
+223
+00:11:19,300 --> 00:11:22,400
+might understand simple data
+
+224
+00:11:22,400 --> 00:11:25,500
+collection processes don't contain a complete environmental record if
+
+225
+00:11:25,500 --> 00:11:28,300
+I have a cube and I'm recording the position and
+
+226
+00:11:28,300 --> 00:11:31,500
+rotation of that cube, right that's information. I'd want to track through a
+
+227
+00:11:31,500 --> 00:11:34,700
+Tracker the 3D position and the rotation that tells
+
+228
+00:11:34,700 --> 00:11:37,600
+me nothing about the color of the cube the bounding boxes
+
+229
+00:11:37,600 --> 00:11:40,400
+around the cube the scale of the cube all this
+
+230
+00:11:40,400 --> 00:11:44,700
+additional kind of 3D information that could be relevant but
+
+231
+00:11:43,700 --> 00:11:46,300
+isn't sort of immediately available
+
+232
+00:11:46,300 --> 00:11:49,700
+with the data we typically record and so by creating a
+
+233
+00:11:49,700 --> 00:11:53,100
+copy of your scene. We're sort
+
+234
+00:11:52,100 --> 00:11:55,200
+of using unity's abilities to bake in
+
+235
+00:11:55,200 --> 00:11:57,800
+all of that 3D information innately.
+
+236
+00:11:59,600 --> 00:12:02,000
+Which allows us sort of get around that incomplete record.
+
+237
+00:12:03,200 --> 00:12:07,100
+Right. We also know that adding like adding
+
+238
+00:12:06,100 --> 00:12:09,300
+new features like this to a scene that's
+
+239
+00:12:09,300 --> 00:12:12,100
+already existing would be massively would be massive in terms
+
+240
+00:12:12,100 --> 00:12:15,200
+of overhead. You know, you'd have to you know, toggle off
+
+241
+00:12:15,200 --> 00:12:18,000
+certain code that runs for your trials. We don't want to mess with any of that.
+
+242
+00:12:18,400 --> 00:12:21,300
+We want to have the sort of playback version of
+
+243
+00:12:21,300 --> 00:12:24,300
+your scene completely separate. We also need
+
+244
+00:12:24,300 --> 00:12:27,500
+to accommodate for like stimulus that's recorded different rates and things of that nature. There
+
+245
+00:12:27,500 --> 00:12:30,400
+are a lot of kind of nitty-gritty details that can
+
+246
+00:12:30,400 --> 00:12:34,600
+really bug things down. But I want to get into an example that hopefully
+
+247
+00:12:34,600 --> 00:12:37,700
+add a lot of clarity I think to sort
+
+248
+00:12:37,700 --> 00:12:40,300
+of the concepts we've been throwing around so far
+
+249
+00:12:43,100 --> 00:12:46,000
+And so here's we're going to kind of go over through the priests through the
+
+250
+00:12:46,300 --> 00:12:50,300
+procedure of how to create a very simple playback environment. And
+
+251
+00:12:49,300 --> 00:12:52,300
+so what I've got running the resolution will
+
+252
+00:12:52,300 --> 00:12:55,500
+eventually catch up what I've got running is a,
+
+253
+00:12:55,500 --> 00:12:58,500
+you know, very simple like a mock experiments.
+
+254
+00:12:58,500 --> 00:13:01,200
+It's going to contain some 3D Primitives just moving around
+
+255
+00:13:01,200 --> 00:13:04,200
+on their own and the scene there's a
+
+256
+00:13:04,200 --> 00:13:07,500
+resolution so you're gonna see very simple movements now in
+
+257
+00:13:07,500 --> 00:13:11,000
+the background you kind of saw that little panel that little
+
+258
+00:13:10,600 --> 00:13:13,300
+UI interface that was
+
+259
+00:13:13,300 --> 00:13:16,700
+for kind of initializing UXF. So in the background you XF
+
+260
+00:13:16,700 --> 00:13:19,800
+is collecting data on the position and the rotation as
+
+261
+00:13:19,800 --> 00:13:23,000
+well as the scale for this guy of all these game objects. It's
+
+262
+00:13:22,200 --> 00:13:26,700
+even recording information on your camera. And so
+
+263
+00:13:26,700 --> 00:13:29,300
+now UXF is doing all that writing this information
+
+264
+00:13:29,300 --> 00:13:31,300
+to a file and
+
+265
+00:13:33,100 --> 00:13:36,000
+that sort of what I want to demonstrate here, right? So what do we
+
+266
+00:13:36,100 --> 00:13:40,000
+do with that information UXF has done a great job written
+
+267
+00:13:39,100 --> 00:13:40,900
+the information for us.
+
+268
+00:13:42,800 --> 00:13:44,800
+How does this how does all this work, right so?
+
+269
+00:13:46,200 --> 00:13:46,900
+We take step back.
+
+270
+00:13:47,800 --> 00:13:48,500
+each stimulus
+
+271
+00:13:49,200 --> 00:13:52,200
+Has a Tracker right that tracker being
+
+272
+00:13:52,200 --> 00:13:55,600
+that chunk of c-sharp code. You can kind of see that box in the middle there. This
+
+273
+00:13:55,600 --> 00:13:58,400
+is illustrating the position and rotation. So what the
+
+274
+00:13:58,400 --> 00:14:01,400
+tracker is doing essentially is it's saying I want to record
+
+275
+00:14:01,400 --> 00:14:04,600
+the X Y and Z position plus the X
+
+276
+00:14:04,600 --> 00:14:08,100
+Y and Z, uh Euler rotation for every
+
+277
+00:14:07,100 --> 00:14:10,200
+single game object from there.
+
+278
+00:14:10,200 --> 00:14:14,000
+The track is going to Output a CSV file, you know,
+
+279
+00:14:14,600 --> 00:14:15,400
+indicating all the data we've collected.
+
+280
+00:14:16,400 --> 00:14:18,000
+And this is where the playback speed comes in.
+
+281
+00:14:19,500 --> 00:14:22,400
+Users of the playback Suite will additionally need to create what
+
+282
+00:14:22,400 --> 00:14:25,400
+I call Reflections. So reflection sort of
+
+283
+00:14:25,400 --> 00:14:28,300
+does the opposite of a Tracker so it takes
+
+284
+00:14:28,300 --> 00:14:32,100
+the data file produced by a Tracker and it's
+
+285
+00:14:31,100 --> 00:14:34,300
+it tells Unity how to
+
+286
+00:14:34,300 --> 00:14:37,400
+recreate those same pieces of information it recorded
+
+287
+00:14:37,400 --> 00:14:40,700
+So if a Tracker is recording the if a
+
+288
+00:14:40,700 --> 00:14:43,800
+Tracker is made by writing the XYZ position
+
+289
+00:14:43,800 --> 00:14:46,600
+to a file a reflection is made by telling
+
+290
+00:14:46,600 --> 00:14:49,400
+unity set the xyp position of
+
+291
+00:14:49,400 --> 00:14:51,100
+a game object Sasha.
+
+292
+00:14:52,900 --> 00:14:53,100
+and
+
+293
+00:14:56,900 --> 00:14:59,300
+So simple things what is
+
+294
+00:14:59,300 --> 00:15:02,200
+the data format that the track is started. So how
+
+295
+00:15:02,200 --> 00:15:05,100
+does the CC file look like then you mentioned
+
+296
+00:15:05,100 --> 00:15:08,800
+that there's a copy of the scene now. We see it entails many environmental
+
+297
+00:15:08,800 --> 00:15:11,700
+variables, right? Then you mentioned that a a
+
+298
+00:15:11,700 --> 00:15:15,300
+unique experimental
+
+299
+00:15:14,300 --> 00:15:17,500
+framework attracted attached a single subject and
+
+300
+00:15:17,500 --> 00:15:18,400
+it records the subject.
+
+301
+00:15:19,500 --> 00:15:23,300
+Physician rotation and scale now this if
+
+302
+00:15:22,300 --> 00:15:25,400
+it's an object is being
+
+303
+00:15:25,400 --> 00:15:28,200
+tracked and it doesn't track the entire seamlessly right as they
+
+304
+00:15:28,200 --> 00:15:31,500
+could be many other environmental variables. So what exactly is
+
+305
+00:15:31,500 --> 00:15:34,200
+being tracked what variables are being
+
+306
+00:15:34,200 --> 00:15:37,100
+tracked and how what is the what is the
+
+307
+00:15:37,100 --> 00:15:40,400
+format? They're being stored? Yeah, so that's actually it's
+
+308
+00:15:40,400 --> 00:15:44,800
+a great question. Let me actually back up a little bit to this video and I'll
+
+309
+00:15:44,800 --> 00:15:47,100
+sort of illustrate that so for every
+
+310
+00:15:47,100 --> 00:15:50,500
+single one of these objects each one has a Tracker attached recording the
+
+311
+00:15:50,500 --> 00:15:53,300
+position and the rotation. Those are
+
+312
+00:15:53,300 --> 00:15:56,300
+the only two meaningful chunks of data and it's going to be recording that data for
+
+313
+00:15:56,300 --> 00:15:58,100
+every single frame of the experiment.
+
+314
+00:16:01,100 --> 00:16:04,200
+And so this is a bit of extra pieces. But you know, they're essentially
+
+315
+00:16:04,200 --> 00:16:07,600
+will be a numerical entry for every single frame indicating.
+
+316
+00:16:07,600 --> 00:16:12,100
+It's X Y and Z position X Y and Z rotation. That's
+
+317
+00:16:10,100 --> 00:16:13,800
+all the data that's being recorded via
+
+318
+00:16:13,800 --> 00:16:16,900
+UXF the scene replication,
+
+319
+00:16:16,900 --> 00:16:19,200
+which I'm going to talk about. I believe actually in the following slide.
+
+320
+00:16:21,900 --> 00:16:25,700
+Is going to kind of cover the rest, right? So we
+
+321
+00:16:25,700 --> 00:16:28,300
+have our trackers we have them assigned the game objects. Now we want
+
+322
+00:16:28,300 --> 00:16:32,800
+to be able to generate a playback scene right now. Essentially.
+
+323
+00:16:31,800 --> 00:16:35,000
+What I've created is a component that I
+
+324
+00:16:34,900 --> 00:16:37,200
+won't go too much in the technical details, but
+
+325
+00:16:37,200 --> 00:16:40,700
+effectively the way that it works is that it will scan
+
+326
+00:16:40,700 --> 00:16:43,500
+your scene for all game objects determine what's
+
+327
+00:16:43,500 --> 00:16:46,700
+being tracked and what has meaningful visual stimulus
+
+328
+00:16:46,700 --> 00:16:49,600
+not everything that is tracked has meaningful visual
+
+329
+00:16:49,600 --> 00:16:52,400
+stimulus. We actually if we go back to this video, for example,
+
+330
+00:16:52,400 --> 00:16:55,500
+we consider the floor you can kind of see in the background to be
+
+331
+00:16:55,500 --> 00:16:57,500
+meaningful visual stimulus. It doesn't move.
+
+332
+00:16:58,300 --> 00:17:02,400
+And so we want the ability to generate a scene and
+
+333
+00:17:01,400 --> 00:17:04,400
+taken all that data. And so
+
+334
+00:17:04,400 --> 00:17:07,500
+sort of that interface at the very top here sort of defines. Okay,
+
+335
+00:17:07,500 --> 00:17:11,200
+like these are the meaningful components within Unity that
+
+336
+00:17:10,200 --> 00:17:13,700
+that all like meaningful visual
+
+337
+00:17:13,700 --> 00:17:16,800
+stimulus will have let's generate a playback scene and
+
+338
+00:17:16,800 --> 00:17:19,200
+it'll just create that copy for you based off
+
+339
+00:17:19,200 --> 00:17:23,200
+of the current experiment the current environment States within your
+
+340
+00:17:23,200 --> 00:17:23,500
+editor.
+
+341
+00:17:25,500 --> 00:17:28,300
+So I hope that the answer your question anything. I want to want me
+
+342
+00:17:28,300 --> 00:17:29,500
+to elaborate on relative to that.
+
+343
+00:17:30,300 --> 00:17:33,400
+It is not guaranteed that the Privacy that
+
+344
+00:17:33,400 --> 00:17:34,600
+is created is full complete.
+
+345
+00:17:35,900 --> 00:17:39,000
+Because you mentioned that it determines by
+
+346
+00:17:38,200 --> 00:17:41,500
+itself which which opt-game objects
+
+347
+00:17:41,500 --> 00:17:44,400
+are meaningful and which are not so you've never
+
+348
+00:17:44,400 --> 00:17:47,300
+the object might seem not meaningful by
+
+349
+00:17:47,300 --> 00:17:50,500
+the by the script it might be meaningful to
+
+350
+00:17:50,500 --> 00:17:53,200
+the subject. So what actually does is that you can
+
+351
+00:17:53,200 --> 00:17:57,200
+you can change this less. However, you want you can add or remove meaningful
+
+352
+00:17:56,200 --> 00:17:59,400
+components. So if you were simulation happens to
+
+353
+00:17:59,400 --> 00:18:03,100
+have components that are not meaningful to other simulations or
+
+354
+00:18:02,100 --> 00:18:05,600
+our meaningful in your specific case, then
+
+355
+00:18:05,600 --> 00:18:09,700
+the script will know to replicate those and
+
+356
+00:18:08,700 --> 00:18:11,300
+it'll create an exact replica of
+
+357
+00:18:11,300 --> 00:18:14,700
+the hierarchy of your project with all those objects in there sort
+
+358
+00:18:14,700 --> 00:18:17,500
+of default States if they update over time at
+
+359
+00:18:17,500 --> 00:18:20,100
+all. Well, that's a tracker's job. And so when you create a
+
+360
+00:18:20,100 --> 00:18:23,300
+reflection any changes that happen to the object pass its initial
+
+361
+00:18:23,300 --> 00:18:26,600
+state will be recorded and reflected in the reflection.
+
+362
+00:18:30,500 --> 00:18:33,300
+Yeah, it is a sort of like a backup
+
+363
+00:18:33,300 --> 00:18:36,200
+in a way and you define exactly what
+
+364
+00:18:36,200 --> 00:18:39,300
+counts as a backup. So it is possible. Yes to come to create like
+
+365
+00:18:39,300 --> 00:18:42,300
+incomplete playback environments. If you don't Define it correctly.
+
+366
+00:18:42,300 --> 00:18:45,000
+However, the vast majority of cases are going to
+
+367
+00:18:45,200 --> 00:18:48,300
+have a very small set of actual meaningful visual components.
+
+368
+00:18:48,300 --> 00:18:49,100
+For example
+
+369
+00:18:50,600 --> 00:18:53,400
+Within within this scene, right if like anything,
+
+370
+00:18:53,400 --> 00:18:56,600
+let's look at the stimulus here this game object.
+
+371
+00:18:56,600 --> 00:18:59,100
+But because you can see it is guaranteed to
+
+372
+00:18:59,100 --> 00:19:02,200
+have a mesh filter component anything that you see will have that
+
+373
+00:19:02,200 --> 00:19:05,200
+component. And so if you want your playback scene to replicate anything
+
+374
+00:19:05,200 --> 00:19:06,300
+that you can see well
+
+375
+00:19:07,300 --> 00:19:09,400
+you include that component within the
+
+376
+00:19:11,200 --> 00:19:12,400
+within the scene generator
+
+377
+00:19:13,500 --> 00:19:16,200
+and so, you know, it can cover
+
+378
+00:19:16,200 --> 00:19:19,600
+all gaps. You just need to be able to account for any potential
+
+379
+00:19:19,600 --> 00:19:22,300
+gaps, but I would imagine
+
+380
+00:19:22,300 --> 00:19:25,300
+that the majority of use cases wouldn't go
+
+381
+00:19:25,300 --> 00:19:28,000
+too far outside of you know,
+
+382
+00:19:28,800 --> 00:19:31,500
+seven or eight components in total that create
+
+383
+00:19:31,500 --> 00:19:32,500
+meaningful visual stimulus.
+
+384
+00:19:33,300 --> 00:19:36,700
+Because just that mesh filter encompasses about 99% of
+
+385
+00:19:36,700 --> 00:19:37,000
+cases.
+
+386
+00:19:41,900 --> 00:19:45,300
+So what's the results it's actually
+
+387
+00:19:45,300 --> 00:19:48,200
+show you the playback system in action here.
+
+388
+00:19:48,200 --> 00:19:51,500
+So you can load in your data from a given directory. And this
+
+389
+00:19:51,500 --> 00:19:55,100
+is a very simple version of the interface. This is
+
+390
+00:19:54,100 --> 00:19:57,500
+sort of like the portable version and you
+
+391
+00:19:57,500 --> 00:20:01,400
+can kind of see it playing back here like a video player where you
+
+392
+00:20:00,400 --> 00:20:03,800
+know, you can pause play kind
+
+393
+00:20:03,800 --> 00:20:06,300
+of scrub through it and all those same movements you
+
+394
+00:20:06,300 --> 00:20:09,600
+saw in the earlier video are replicated here. All it's
+
+395
+00:20:09,600 --> 00:20:13,200
+doing is Reading in the data from your trackers. You can't
+
+396
+00:20:12,200 --> 00:20:15,500
+even tell that this scene is that carbon copy
+
+397
+00:20:15,500 --> 00:20:17,400
+of the scene? You saw earlier look exactly the same.
+
+398
+00:20:20,200 --> 00:20:22,400
+And so that's at its core.
+
+399
+00:20:23,300 --> 00:20:26,600
+How you get that set up up and running there's plenty
+
+400
+00:20:26,600 --> 00:20:29,700
+of other bits of information that will be contained, you know
+
+401
+00:20:29,700 --> 00:20:32,300
+within this within this interface as a
+
+402
+00:20:32,300 --> 00:20:35,500
+develops further, but you're going to see probably a
+
+403
+00:20:35,500 --> 00:20:39,100
+more complex version as we go into sort of the prototype for
+
+404
+00:20:38,100 --> 00:20:40,000
+the playback Suites.
+
+405
+00:20:41,900 --> 00:20:42,900
+moving into the case studies
+
+406
+00:20:43,800 --> 00:20:46,400
+and that's what I want to do next. I want
+
+407
+00:20:46,400 --> 00:20:49,500
+to move into the case studies and talk a little bit about those sort of
+
+408
+00:20:49,500 --> 00:20:52,700
+how the playback speed has been applied it
+
+409
+00:20:52,700 --> 00:20:53,500
+also how it originated.
+
+410
+00:20:54,600 --> 00:20:57,400
+So this may seem familiar to
+
+411
+00:20:57,400 --> 00:21:00,100
+a number of you here might be tired of
+
+412
+00:21:00,100 --> 00:21:01,900
+seeing it, but I'm sure it anyway.
+
+413
+00:21:03,600 --> 00:21:06,000
+So this environment so I'm not
+
+414
+00:21:06,100 --> 00:21:09,800
+going to go too much into the experiment itself just about the environmental features. We have
+
+415
+00:21:09,800 --> 00:21:12,300
+participants doing drone flight
+
+416
+00:21:12,300 --> 00:21:15,300
+through a dense Force environments flying laps around this
+
+417
+00:21:15,300 --> 00:21:18,500
+course, we have Gates we have trees. We have a path we have
+
+418
+00:21:18,500 --> 00:21:21,700
+gaze data in the background being constantly recorded by pupil labs.
+
+419
+00:21:21,700 --> 00:21:24,300
+And like that's what
+
+420
+00:21:24,300 --> 00:21:27,800
+we got going on in the environment right even just
+
+421
+00:21:27,800 --> 00:21:30,400
+by that basic description. There are huge
+
+422
+00:21:30,400 --> 00:21:34,100
+number of obstacles to doing like interesting
+
+423
+00:21:33,100 --> 00:21:36,500
+visual analysis on this scene. So for starters,
+
+424
+00:21:36,500 --> 00:21:39,500
+the rendering cost is enormous. If you're working in
+
+425
+00:21:39,500 --> 00:21:43,400
+VR you need to at least be hitting 90 frames per second consistently that's
+
+426
+00:21:42,400 --> 00:21:45,300
+really hard to do when you're also running an eye
+
+427
+00:21:45,300 --> 00:21:48,600
+tracker in the background have a realistic environment with realistic lighting.
+
+428
+00:21:50,500 --> 00:21:52,100
+And you know things of that nature.
+
+429
+00:21:53,100 --> 00:21:56,800
+So that's already a huge kind of burden on
+
+430
+00:21:56,800 --> 00:21:59,300
+your performance. So if you're interested in like creating
+
+431
+00:21:59,300 --> 00:22:02,200
+recordings of different camera perspectives of that scene.
+
+432
+00:22:03,100 --> 00:22:06,100
+Good luck. It's really really difficult to get up
+
+433
+00:22:06,100 --> 00:22:09,100
+and running. I would say it's pretty much impossible. Unless you have a separate
+
+434
+00:22:09,100 --> 00:22:12,700
+machine capable of like doing some
+
+435
+00:22:12,700 --> 00:22:13,400
+kind of remote connection.
+
+436
+00:22:15,500 --> 00:22:18,500
+But it's it's pretty much infeasible task beyond the
+
+437
+00:22:18,500 --> 00:22:21,400
+point because if you want to have another camera perspective you basically need
+
+438
+00:22:21,400 --> 00:22:24,300
+to double the entire day of your rendering cost this environment. It's all
+
+439
+00:22:24,300 --> 00:22:24,800
+rendering cost.
+
+440
+00:22:25,400 --> 00:22:28,200
+It's also really noisy, right? There's a ton
+
+441
+00:22:28,200 --> 00:22:31,800
+of clutter going on here a lot of bits and pieces of sort
+
+442
+00:22:31,800 --> 00:22:34,500
+of somewhat meaningful information here
+
+443
+00:22:34,500 --> 00:22:37,200
+and there they can kind of complicate The Gaze data and make it difficult
+
+444
+00:22:37,200 --> 00:22:40,300
+to interpret. So if you want to have 3D visualization within this
+
+445
+00:22:40,300 --> 00:22:43,800
+scene the playback system sort of emerged as
+
+446
+00:22:43,800 --> 00:22:46,400
+a natural extension of that desire. And so
+
+447
+00:22:46,400 --> 00:22:50,700
+that's what we sort of created in our prototype. So this
+
+448
+00:22:50,700 --> 00:22:53,200
+year is the sort of original version
+
+449
+00:22:53,200 --> 00:22:56,400
+of the playback system that was created specifically for this
+
+450
+00:22:56,400 --> 00:22:59,300
+experiment highlights a couple of things as a ton of information going
+
+451
+00:22:59,300 --> 00:23:02,400
+on here. So I want to be able to unpack a little bit of all
+
+452
+00:23:02,400 --> 00:23:05,200
+of this and describe it and brief. So we
+
+453
+00:23:05,200 --> 00:23:08,100
+have toward like the top left hand corner top right hand
+
+454
+00:23:08,100 --> 00:23:11,600
+corner. We have the actual. So this
+
+455
+00:23:11,600 --> 00:23:15,000
+is all recorded in one day to file so all the data for
+
+456
+00:23:14,300 --> 00:23:17,500
+the Drone itself and the Gaze was
+
+457
+00:23:17,500 --> 00:23:20,200
+sort of is kind of visualized in the corners at
+
+458
+00:23:20,200 --> 00:23:23,700
+the top. Don't pay that too much mind. We have buttons on
+
+459
+00:23:23,700 --> 00:23:25,200
+the left hand side that allow you to
+
+460
+00:23:25,400 --> 00:23:29,400
+On and off different visualizations and on
+
+461
+00:23:28,400 --> 00:23:31,500
+the bottom. You see the familiar playback interface
+
+462
+00:23:31,500 --> 00:23:34,500
+with a few more features a more robust speed slider
+
+463
+00:23:34,500 --> 00:23:38,300
+the ability to skip through frames via certain
+
+464
+00:23:38,300 --> 00:23:41,300
+like number of frames at a time and other little
+
+465
+00:23:41,300 --> 00:23:44,600
+feature that I'll talk about later right that in
+
+466
+00:23:44,600 --> 00:23:47,000
+that section at the bottom right that says image rendering. We'll come back
+
+467
+00:23:47,100 --> 00:23:47,200
+to that.
+
+468
+00:23:48,700 --> 00:23:49,400
+Go ahead.
+
+469
+00:23:50,300 --> 00:23:54,100
+So the
+
+470
+00:23:53,100 --> 00:23:56,300
+meaningful stimuli is essentially the entirety of
+
+471
+00:23:56,300 --> 00:23:56,800
+this environment.
+
+472
+00:23:58,900 --> 00:24:01,200
+To to some extent or another right whether it's the
+
+473
+00:24:01,200 --> 00:24:04,700
+trees and the distinction perhaps
+
+474
+00:24:04,700 --> 00:24:07,500
+between Trees close to the path trees Far From the Path the ground
+
+475
+00:24:07,500 --> 00:24:10,600
+itself the path itself the gates the
+
+476
+00:24:10,600 --> 00:24:13,400
+sky out in the distance. There's a
+
+477
+00:24:13,400 --> 00:24:16,800
+lot of potentially meaningful information and I
+
+478
+00:24:16,800 --> 00:24:19,300
+say potentially meaningful because in environment like this a
+
+479
+00:24:19,300 --> 00:24:22,500
+lot of your research is going to be exploratory. You don't know necessarily what
+
+480
+00:24:22,500 --> 00:24:25,500
+you're looking for. And so all pieces of environmental data
+
+481
+00:24:25,500 --> 00:24:28,200
+have the potential to be relevant in some sense or another.
+
+482
+00:24:30,800 --> 00:24:35,000
+So yeah, we're gonna start playing this video through and
+
+483
+00:24:33,200 --> 00:24:36,200
+this is kind of run you through this is
+
+484
+00:24:36,200 --> 00:24:39,700
+just me kind of going through some of the the basic features. I'm playing
+
+485
+00:24:39,700 --> 00:24:42,300
+with the speed slider here. So we're running it maybe like half speed
+
+486
+00:24:42,300 --> 00:24:46,100
+right now. We're now we're gonna go like frame by frame for a
+
+487
+00:24:45,100 --> 00:24:46,400
+little bits.
+
+488
+00:24:48,600 --> 00:24:51,900
+And so on we have again like more speed adjustments
+
+489
+00:24:51,900 --> 00:24:54,300
+on this sample flights and we
+
+490
+00:24:54,300 --> 00:24:56,500
+also have you can kind of see two different crosshairs.
+
+491
+00:24:58,400 --> 00:25:01,300
+This this is a story behind this right? So this
+
+492
+00:25:01,300 --> 00:25:04,300
+is a very simple as a problem. You were sort of talking about a very
+
+493
+00:25:04,300 --> 00:25:07,700
+simple overlay of your gaze within the the
+
+494
+00:25:07,700 --> 00:25:10,100
+2D screen or onto the 2D screen,
+
+495
+00:25:10,100 --> 00:25:13,300
+right? And we actually have two different crosshairs here because the problem
+
+496
+00:25:13,300 --> 00:25:17,600
+that we ran into sort of during data collection
+
+497
+00:25:17,600 --> 00:25:19,700
+on this experiment so
+
+498
+00:25:20,900 --> 00:25:23,500
+Initially the way we were recording gaze data was
+
+499
+00:25:23,500 --> 00:25:26,600
+by using the pupil Labs Unity API
+
+500
+00:25:26,600 --> 00:25:30,000
+to Output all the information to a
+
+501
+00:25:29,100 --> 00:25:32,500
+file. Right and we use that and accepted
+
+502
+00:25:32,500 --> 00:25:35,100
+that sort of as truth. What we didn't know is that
+
+503
+00:25:35,100 --> 00:25:38,100
+there were some issues the eye tracker that we were using with
+
+504
+00:25:38,100 --> 00:25:41,400
+pupilabs also recorded some additional post-processing which means
+
+505
+00:25:41,400 --> 00:25:44,100
+after we collected the data within Unity. We then need to
+
+506
+00:25:44,100 --> 00:25:47,100
+take it to another piece of software. We had to
+
+507
+00:25:47,100 --> 00:25:50,400
+essentially like remap a
+
+508
+00:25:50,400 --> 00:25:53,300
+lot of the a lot of the gays data and we wound up
+
+509
+00:25:53,300 --> 00:25:56,100
+getting completely different numbers after that. Those numbers were much more
+
+510
+00:25:56,100 --> 00:26:00,100
+accurate to what was actually happening, but they had
+
+511
+00:25:59,100 --> 00:26:02,600
+nothing to do with the data. We actually collected in unity
+
+512
+00:26:02,600 --> 00:26:06,000
+plus they were an entirely different formats and just
+
+513
+00:26:05,300 --> 00:26:08,500
+could not be visualized the same way and we
+
+514
+00:26:08,500 --> 00:26:12,100
+didn't know that was happening until we started visualizing the gays
+
+515
+00:26:11,100 --> 00:26:14,300
+Crosshair not just in 3D space, but also we're
+
+516
+00:26:14,300 --> 00:26:18,200
+not just in 2D space here, but in 3D space, oops actually
+
+517
+00:26:17,200 --> 00:26:19,600
+just skipped the entire video.
+
+518
+00:26:22,500 --> 00:26:25,300
+Let's pull that back. So we started to analyzing the scene
+
+519
+00:26:25,300 --> 00:26:28,300
+in 3D space. And with this
+
+520
+00:26:28,300 --> 00:26:32,100
+third person perspective. What we couldn't see in the two-dimensional view is
+
+521
+00:26:31,100 --> 00:26:34,700
+that we had times when the that red
+
+522
+00:26:34,700 --> 00:26:37,200
+beam which represents the incorrect one. The original
+
+523
+00:26:37,200 --> 00:26:40,900
+data be collected would end up going behind your drone, which is
+
+524
+00:26:40,900 --> 00:26:45,400
+you all have eyes that's impossible. It
+
+525
+00:26:43,400 --> 00:26:46,200
+does not happen. So
+
+526
+00:26:47,200 --> 00:26:50,100
+Clearly something was very visually wrong and we
+
+527
+00:26:50,100 --> 00:26:53,200
+didn't know that just looking at the numbers now, we could have visualized that in a number
+
+528
+00:26:53,200 --> 00:26:56,300
+of ways but having this already available made an incredibly easy
+
+529
+00:26:56,300 --> 00:26:59,100
+to decipher that problem. And so
+
+530
+00:26:59,100 --> 00:27:02,900
+we needed to do more computation right in
+
+531
+00:27:02,900 --> 00:27:05,300
+our original recording we had information about like where
+
+532
+00:27:05,300 --> 00:27:08,400
+your gaze was Landing what object it was hitting where on
+
+533
+00:27:08,400 --> 00:27:11,300
+that object. It was hitting we didn't have that anymore. We had
+
+534
+00:27:11,300 --> 00:27:14,300
+to do post processing the green beans now mapped
+
+535
+00:27:14,300 --> 00:27:17,100
+to somewhere entirely different than the red beam, but we were
+
+536
+00:27:17,100 --> 00:27:20,600
+able to import that data back into the playback system and I
+
+537
+00:27:20,600 --> 00:27:24,000
+made that mistake again. It just skipped it over. So we're
+
+538
+00:27:23,100 --> 00:27:26,600
+able to reimport that data back into the playback system and
+
+539
+00:27:26,600 --> 00:27:30,100
+Export additional information basically,
+
+540
+00:27:29,100 --> 00:27:32,600
+right a new mapping of what
+
+541
+00:27:32,600 --> 00:27:36,100
+your gaze is landing on at any given point in time and that
+
+542
+00:27:35,100 --> 00:27:39,200
+became really useful to us. It also
+
+543
+00:27:39,200 --> 00:27:42,500
+allowed us to do computation on values that
+
+544
+00:27:42,500 --> 00:27:45,200
+we never even collected initially. So I remember
+
+545
+00:27:45,200 --> 00:27:46,900
+at some point or another we decided that we
+
+546
+00:27:47,200 --> 00:27:51,500
+Is also computes participant heading and run
+
+547
+00:27:50,500 --> 00:27:52,000
+that through.
+
+548
+00:27:52,900 --> 00:27:55,500
+Now this is really easy in the playback system because we already had
+
+549
+00:27:55,500 --> 00:27:58,800
+something capable of exporting additional data
+
+550
+00:27:58,800 --> 00:28:01,600
+from our scene. So all we need to do is is use
+
+551
+00:28:01,600 --> 00:28:04,600
+the change in position over time across
+
+552
+00:28:04,600 --> 00:28:07,100
+frames and compute a new
+
+553
+00:28:07,100 --> 00:28:07,300
+file.
+
+554
+00:28:08,100 --> 00:28:10,400
+Right with the old file that also included our heading.
+
+555
+00:28:11,600 --> 00:28:14,100
+So all kinds of information can sort
+
+556
+00:28:14,100 --> 00:28:17,600
+of be extrapolated in ways that are sort of cohesive and
+
+557
+00:28:17,600 --> 00:28:20,700
+convenience through this playback system. Now those
+
+558
+00:28:20,700 --> 00:28:23,600
+those ideas aren't unique to the
+
+559
+00:28:23,600 --> 00:28:26,500
+playback Suite but they are
+
+560
+00:28:26,500 --> 00:28:30,000
+made I think a lot easier and again a lot more unified. Oh,
+
+561
+00:28:29,200 --> 00:28:31,600
+but there's one more thing that I did not mention.
+
+562
+00:28:33,400 --> 00:28:36,200
+About this system that I want to talk about. I'm gonna go back to this video for
+
+563
+00:28:36,200 --> 00:28:39,200
+the umpteenth time and talk about the bottom right hand corner, so
+
+564
+00:28:40,300 --> 00:28:44,300
+In the bottom right hand corner, we have something called image rendering. Now
+
+565
+00:28:43,300 --> 00:28:48,200
+what you can do with the playback Suites is once
+
+566
+00:28:46,200 --> 00:28:49,200
+you've put your data back into
+
+567
+00:28:49,200 --> 00:28:52,400
+unity and play it back frame by frame. You also have the ability to
+
+568
+00:28:52,400 --> 00:28:56,100
+render out every single one of those frames individual images and
+
+569
+00:28:55,100 --> 00:28:58,600
+in those images you can you can
+
+570
+00:28:58,600 --> 00:29:01,800
+demonstrate and I'll actually show here not only
+
+571
+00:29:01,800 --> 00:29:04,700
+can you demonstrate difference filters on
+
+572
+00:29:04,700 --> 00:29:07,400
+top of the camera. They may be visualized certain important piece
+
+573
+00:29:07,400 --> 00:29:10,800
+of information. And this one we have an example of sort
+
+574
+00:29:10,800 --> 00:29:13,600
+of distinct coloring of meaningful game objects
+
+575
+00:29:13,600 --> 00:29:17,100
+as they're close to the path and homogenous coloring
+
+576
+00:29:16,100 --> 00:29:19,500
+of game objects Far From the Path as shown
+
+577
+00:29:19,500 --> 00:29:20,700
+by all those solid color trees.
+
+578
+00:29:22,600 --> 00:29:25,200
+So that was a visualization. We were able to accomplish. We're also
+
+579
+00:29:25,200 --> 00:29:29,200
+able to get you know, those images output from
+
+580
+00:29:28,200 --> 00:29:31,700
+different camera angles as well. And if
+
+581
+00:29:31,700 --> 00:29:34,600
+you have a series of images, they can be compressed into a
+
+582
+00:29:34,600 --> 00:29:37,400
+single video and so as a result we then
+
+583
+00:29:37,400 --> 00:29:40,500
+have the power to record video from infinite camera perspectives
+
+584
+00:29:40,500 --> 00:29:44,000
+with any configuration of our different visualizations
+
+585
+00:29:43,900 --> 00:29:45,400
+within the scene.
+
+586
+00:29:46,400 --> 00:29:49,200
+And that's where I think the playback system gets really really interesting.
+
+587
+00:29:52,500 --> 00:29:55,800
+So yeah, that that is a at its
+
+588
+00:29:55,800 --> 00:29:57,300
+core sort of what this is all about.
+
+589
+00:29:59,200 --> 00:30:00,300
+Now the next case study.
+
+590
+00:30:01,100 --> 00:30:04,600
+Is going to be a lot more limited in its scope because this is
+
+591
+00:30:04,600 --> 00:30:07,600
+meant to be sort of integration test with the
+
+592
+00:30:07,600 --> 00:30:10,300
+portable version that I sort of demonstrated earlier and a novel
+
+593
+00:30:10,300 --> 00:30:13,400
+simulator. It looks like actually Google Slides still hasn't formatted
+
+594
+00:30:13,400 --> 00:30:16,300
+the video which is curious. Let's see if it wants to open it and
+
+595
+00:30:16,300 --> 00:30:19,600
+drive. I might be able to demonstrate this video is still processing. All
+
+596
+00:30:19,600 --> 00:30:22,100
+right, I'll talk about that while this downloads. Maybe we'll get somewhere with that.
+
+597
+00:30:22,100 --> 00:30:23,300
+So
+
+598
+00:30:24,800 --> 00:30:27,500
+Um, yeah, so essentially what
+
+599
+00:30:27,500 --> 00:30:30,700
+to sort of stress test the compatibility of this with a simulation that's
+
+600
+00:30:30,700 --> 00:30:33,800
+never seen before and the simulation that has paradigms that
+
+601
+00:30:33,800 --> 00:30:36,200
+are not present and I think a lot
+
+602
+00:30:36,200 --> 00:30:39,200
+of other pieces of software as well as not present
+
+603
+00:30:39,200 --> 00:30:42,600
+in anything. We've tested thus far right and so essentially we're
+
+604
+00:30:42,600 --> 00:30:45,500
+working with and maybe you'll see in a few seconds is a
+
+605
+00:30:45,500 --> 00:30:48,400
+car simulator derived from
+
+606
+00:30:48,400 --> 00:30:50,900
+Gabriel Diaz at RIT.
+
+607
+00:30:52,700 --> 00:30:55,600
+Which features a couple of things like randomly generated Road paths
+
+608
+00:30:55,600 --> 00:30:58,900
+Dynamic mesh construction and destruction on
+
+609
+00:30:58,900 --> 00:31:01,200
+objects that are actually important to the data
+
+610
+00:31:01,200 --> 00:31:04,300
+recording which is interesting as well as eye tracking on
+
+611
+00:31:04,300 --> 00:31:07,300
+top of that it will as a progresses
+
+612
+00:31:07,300 --> 00:31:10,600
+because the simulation is still in development will have
+
+613
+00:31:10,600 --> 00:31:13,900
+more realistic environments that will
+
+614
+00:31:13,900 --> 00:31:16,600
+produce some interesting noise and the potential for very interesting
+
+615
+00:31:16,600 --> 00:31:19,200
+visualizations. This video here
+
+616
+00:31:19,200 --> 00:31:22,100
+kind of demonstrates a little bit. We're not going to go too deep into all this.
+
+617
+00:31:26,300 --> 00:31:28,200
+Sure take my recommended settings go right ahead.
+
+618
+00:31:29,800 --> 00:31:32,100
+There we go. Sorry the video is a
+
+619
+00:31:32,100 --> 00:31:35,100
+little bit off kilter. I messed up an OBS and realized.
+
+620
+00:31:37,500 --> 00:31:40,400
+The drag this file but you know the actual simulation
+
+621
+00:31:40,400 --> 00:31:43,100
+here as it stands with the video I have right I was
+
+622
+00:31:43,100 --> 00:31:46,100
+very simple. It's just a car driving down a road, but there are a
+
+623
+00:31:46,100 --> 00:31:49,700
+lot of features you can't see so the road mesh can constantly
+
+624
+00:31:49,700 --> 00:31:52,000
+generating, you know,
+
+625
+00:31:52,100 --> 00:31:56,300
+the way that it's getting destroyed as you progress past it there are
+
+626
+00:31:56,300 --> 00:32:00,800
+multiple to different trials. So as you progressing at randomly generated, so
+
+627
+00:31:59,800 --> 00:32:02,300
+this is sort of the environment we want
+
+628
+00:32:02,300 --> 00:32:05,200
+to go into next and this
+
+629
+00:32:05,200 --> 00:32:08,600
+video is just sort of to demonstrate. You know, what we're looking at what we
+
+630
+00:32:08,600 --> 00:32:09,000
+plan on doing.
+
+631
+00:32:10,300 --> 00:32:11,800
+um, let's get back into
+
+632
+00:32:13,700 --> 00:32:14,000
+yes.
+
+633
+00:32:16,400 --> 00:32:16,700
+So yeah.
+
+634
+00:32:17,900 --> 00:32:20,400
+To recap I want to overview what the playback Suite
+
+635
+00:32:20,400 --> 00:32:23,500
+is best suited for it's really great. I believe for
+
+636
+00:32:23,500 --> 00:32:26,400
+research that's done with you
+
+637
+00:32:26,400 --> 00:32:29,400
+know, continuous data collection, whether that's continuous as
+
+638
+00:32:29,400 --> 00:32:32,800
+a result of I data whether that's a constantly moving person like
+
+639
+00:32:32,800 --> 00:32:35,400
+a character within your environment whether that's constantly moving
+
+640
+00:32:35,400 --> 00:32:39,100
+stimuli that you're interested in studying, you know,
+
+641
+00:32:39,100 --> 00:32:42,500
+all of that can then be played back frame by frame within the playback Suites
+
+642
+00:32:42,500 --> 00:32:45,200
+if you have high rendering costs. Well, like
+
+643
+00:32:45,200 --> 00:32:49,200
+I mentioned earlier that ability to offer multiple different camera perspectives without
+
+644
+00:32:48,200 --> 00:32:51,500
+the need to record anything additional at runtime
+
+645
+00:32:51,500 --> 00:32:54,500
+outside of your basic data becomes really useful because
+
+646
+00:32:54,500 --> 00:32:57,500
+you don't have to worry about you don't have to worry nearly
+
+647
+00:32:57,500 --> 00:33:00,700
+as much about your frame budget in order to make those extra visualizations
+
+648
+00:33:00,700 --> 00:33:03,200
+happen and in general
+
+649
+00:33:03,200 --> 00:33:06,100
+just any kind of complex three-dimensional or
+
+650
+00:33:06,100 --> 00:33:09,500
+interactive environment is going to have I think a lot of a
+
+651
+00:33:09,500 --> 00:33:12,300
+lot of data that could be interestingly played back using this system.
+
+652
+00:33:13,400 --> 00:33:16,100
+So what are we going next? We want to
+
+653
+00:33:16,100 --> 00:33:19,900
+sort of complete a test integration within that
+
+654
+00:33:19,900 --> 00:33:22,400
+that second case study that car
+
+655
+00:33:22,400 --> 00:33:25,200
+experiment. We want to get this software ready for
+
+656
+00:33:25,200 --> 00:33:29,000
+a major release so it can be used more broadly. I need
+
+657
+00:33:28,100 --> 00:33:31,500
+to spend plenty of time writing down guides and documentation on
+
+658
+00:33:31,500 --> 00:33:34,100
+how to use this because I'm sure as you've sort of understood up to
+
+659
+00:33:34,100 --> 00:33:37,100
+this point, there's a lot going on and there's more going on
+
+660
+00:33:37,100 --> 00:33:40,200
+than I've even talked about in order to make all
+
+661
+00:33:40,200 --> 00:33:43,500
+of this fall into place. So in order to do that, we need
+
+662
+00:33:43,500 --> 00:33:45,100
+to be very straightforward and very comprehensible.
+
+663
+00:33:46,200 --> 00:33:49,100
+And of course distribute the code and try to support
+
+664
+00:33:49,100 --> 00:33:49,900
+it for as long as possible.
+
+665
+00:33:50,700 --> 00:33:53,500
+But with all that said I
+
+666
+00:33:53,500 --> 00:33:56,100
+am now finished. So, thank you.
+
+667
+00:34:24,700 --> 00:34:27,100
+I don't know exactly to be honest, of course the
+
+668
+00:34:27,100 --> 00:34:30,400
+the amount of data you're going to get depends on your recording rate. So for
+
+669
+00:34:30,400 --> 00:34:33,200
+example, if you want to record every single frame, you're gonna get a ton of data
+
+670
+00:34:33,200 --> 00:34:36,600
+that might add up if your trials are particularly long, but that's
+
+671
+00:34:36,600 --> 00:34:40,300
+going to happen. Anyway, that's sort of an inevitability. If you're
+
+672
+00:34:40,300 --> 00:34:43,900
+using like a more consistent like 60 frame per second locked update,
+
+673
+00:34:43,900 --> 00:34:46,300
+then you won't be getting as much data now the actual
+
+674
+00:34:46,300 --> 00:34:49,100
+like I guess file size overhead introduced by
+
+675
+00:34:49,100 --> 00:34:51,500
+the playback Suite it's actually relatively minimal.
+
+676
+00:34:52,200 --> 00:34:55,100
+This is because it's reusing all the same assets that
+
+677
+00:34:55,100 --> 00:34:58,400
+already exist within your Unity project. And in a Unity project. The biggest
+
+678
+00:34:58,400 --> 00:35:01,400
+files are the 3D assets the actual
+
+679
+00:35:01,400 --> 00:35:04,400
+like list of Game objects all the components and
+
+680
+00:35:04,400 --> 00:35:07,600
+everything that follows is really small in comparison. Now,
+
+681
+00:35:07,600 --> 00:35:10,300
+of course, it will be a lot of overhead to perhaps have
+
+682
+00:35:10,300 --> 00:35:13,800
+to go over to make sure that everything's working correctly. But
+
+683
+00:35:13,800 --> 00:35:17,200
+you know fundamentally, it doesn't add too
+
+684
+00:35:16,200 --> 00:35:17,800
+too much I believe.
+
+685
+00:35:20,300 --> 00:35:22,500
+was not being overhead but rather than decide just
+
+686
+00:35:23,200 --> 00:35:23,500
+yeah.
+
+687
+00:35:28,200 --> 00:35:31,500
+To be honest, I have no idea. I don't think it megabytes
+
+688
+00:35:31,500 --> 00:35:32,000
+fermented. I'm sorry.
+
+689
+00:35:32,800 --> 00:35:34,000
+Go ahead.
+
+690
+00:35:35,500 --> 00:35:35,800
+her to
+
+691
+00:35:36,900 --> 00:35:39,200
+try to time like because you don't know in advance,
+
+692
+00:35:39,200 --> 00:35:41,100
+which trials you want to sort of.
+
+693
+00:35:43,600 --> 00:35:44,600
+organization so you
+
+694
+00:35:47,100 --> 00:35:50,600
+Right, you need a separate computer. It's
+
+695
+00:35:51,400 --> 00:35:54,400
+it's saying and then the file size is just
+
+696
+00:36:00,100 --> 00:36:00,300
+yeah.
+
+697
+00:36:01,800 --> 00:36:04,300
+So I think it's a reduction relative to
+
+698
+00:36:04,300 --> 00:36:05,400
+that. Oh, yeah.
+
+699
+00:36:07,400 --> 00:36:10,200
+No, I should add that. Like we don't we try to
+
+700
+00:36:10,200 --> 00:36:15,300
+avoid recording data that you're not going to record anyway, so any
+
+701
+00:36:13,300 --> 00:36:16,500
+data that's being recorded and
+
+702
+00:36:16,500 --> 00:36:19,400
+I guess excess of what any researcher already plans to
+
+703
+00:36:19,400 --> 00:36:23,100
+record is relatively minimal. It'll be a new column representing timestamp or
+
+704
+00:36:22,100 --> 00:36:25,400
+some other piece of information just necessary to
+
+705
+00:36:25,400 --> 00:36:28,200
+get the playback Suite working. We're actually trying to want to minimize the amount of
+
+706
+00:36:28,200 --> 00:36:32,300
+like frame by frame data collected but the
+
+707
+00:36:31,300 --> 00:36:34,300
+actual increase in the overall
+
+708
+00:36:34,300 --> 00:36:37,300
+output is minimal. I should also doubly mention that
+
+709
+00:36:37,300 --> 00:36:40,900
+you can use a single like replicated playback scene
+
+710
+00:36:40,900 --> 00:36:43,400
+for many different trials many different
+
+711
+00:36:43,400 --> 00:36:45,300
+trials so long as the recorded in that same environment.
+
+712
+00:36:46,600 --> 00:36:47,700
+the you first
+
+713
+00:37:02,500 --> 00:37:05,500
+you recording the actual
+
+714
+00:37:05,500 --> 00:37:08,300
+position Northern angles frame by frame by frame. Where do
+
+715
+00:37:08,300 --> 00:37:12,500
+you have some mechanism or reporting endpoint to particular parameterized motion
+
+716
+00:37:12,500 --> 00:37:15,100
+to kind of to reduce the file size
+
+717
+00:37:15,100 --> 00:37:15,400
+of
+
+718
+00:37:15,800 --> 00:37:18,900
+Beds. Yeah, so we're going for playbacks. They're entirely deterministic. And
+
+719
+00:37:18,900 --> 00:37:21,300
+so we are recording. We are expecting frame by
+
+720
+00:37:21,300 --> 00:37:24,800
+frame recordings. And that's how the unity experiment framework also works in
+
+721
+00:37:24,800 --> 00:37:27,000
+its expectation. So we're in line with that.
+
+722
+00:37:39,200 --> 00:37:42,600
+The graphics research whether they have a lot of stuff on this. I'm kind
+
+723
+00:37:42,600 --> 00:37:47,300
+of modeling modeling kind
+
+724
+00:37:47,300 --> 00:37:50,300
+of 0.5 Point motion where you know, this
+
+725
+00:37:50,300 --> 00:37:53,800
+Frame is here. Next frame is here next year modeling that
+
+726
+00:37:54,300 --> 00:37:57,600
+as like a close approximation of a function that represents
+
+727
+00:37:57,600 --> 00:38:00,900
+that motion and that functionally a lot less space than
+
+728
+00:38:00,900 --> 00:38:01,400
+the individual.
+
+729
+00:38:03,200 --> 00:38:03,800
+my friend
+
+730
+00:38:04,700 --> 00:38:05,100
+by Frank Northern
+
+731
+00:38:05,900 --> 00:38:08,400
+so curious for you the Messier that as a way to reduce your
+
+732
+00:38:08,400 --> 00:38:09,000
+file size.
+
+733
+00:38:09,800 --> 00:38:12,300
+Overall, no because frankly we're not that concerned with
+
+734
+00:38:12,300 --> 00:38:15,800
+the file size produced by the raw data recording in comparison.
+
+735
+00:38:15,800 --> 00:38:18,800
+For example, the image rendering that
+
+736
+00:38:18,800 --> 00:38:21,500
+happens afterward, which actually does have massive amounts of file size and
+
+737
+00:38:21,500 --> 00:38:25,300
+does need to be configured to you know, potentially reduce those those file
+
+738
+00:38:25,300 --> 00:38:28,300
+size of desired but the actual overhead because
+
+739
+00:38:28,300 --> 00:38:31,600
+it would take a very take a long time for your data design
+
+740
+00:38:31,600 --> 00:38:34,600
+accumulate to you know, megabytes behind
+
+741
+00:38:34,600 --> 00:38:36,200
+megabytes. It's just not a priority.
+
+742
+00:38:42,500 --> 00:38:43,700
+impression was
+
+743
+00:38:44,500 --> 00:38:47,300
+Performance via, so you're
+
+744
+00:38:47,300 --> 00:38:50,500
+obviously on your your offloading the multiple render
+
+745
+00:38:50,500 --> 00:38:53,500
+costs. So later on when you have to rent render it render
+
+746
+00:38:53,500 --> 00:38:54,900
+the other camera angle effect.
+
+747
+00:38:55,700 --> 00:38:58,900
+My question is what's the runtime overhead
+
+748
+00:38:58,900 --> 00:39:02,100
+of doing the I/O like are you are you
+
+749
+00:39:01,100 --> 00:39:04,400
+recording all these data to like any memory buffer
+
+750
+00:39:04,400 --> 00:39:07,300
+and running that at the simulation are you writing into the file as
+
+751
+00:39:07,300 --> 00:39:10,400
+you go what the size your buffers because that can have a big impact.
+
+752
+00:39:10,700 --> 00:39:14,300
+IO in general especially higher discs relative
+
+753
+00:39:13,300 --> 00:39:15,600
+to competitions in memory.
+
+754
+00:39:15,700 --> 00:39:20,600
+Yes, as you
+
+755
+00:39:20,600 --> 00:39:23,300
+go and keeping me the in-memory buffer higher
+
+756
+00:39:23,300 --> 00:39:26,300
+handling performs at runtime in terms of all
+
+757
+00:39:26,300 --> 00:39:29,100
+your IO out of this. Yes, that's a beautiful thing
+
+758
+00:39:29,100 --> 00:39:32,200
+about UXF. It handles all of that for me. I don't even
+
+759
+00:39:32,200 --> 00:39:35,200
+have to think about it but to answer your question so you XF and
+
+760
+00:39:35,200 --> 00:39:39,000
+the way that it records data, it does utilize that memory buffer approach. So
+
+761
+00:39:38,200 --> 00:39:41,900
+I believe at the end of either at
+
+762
+00:39:41,900 --> 00:39:45,300
+the end of Trials or end of blocks. I don't remember which offhand it
+
+763
+00:39:44,300 --> 00:39:47,700
+will then kind of begin a
+
+764
+00:39:47,700 --> 00:39:50,200
+multi-threaded process to be in like writing all of your content to
+
+765
+00:39:50,200 --> 00:39:53,100
+desk and so it's it's really really
+
+766
+00:39:53,100 --> 00:39:56,100
+good at handling that if you want to read more about UXF
+
+767
+00:39:58,500 --> 00:39:59,300
+I'm sorry. Say that again.
+
+768
+00:40:01,800 --> 00:40:04,400
+Yes, yes because UXF is excellent. They're
+
+769
+00:40:04,400 --> 00:40:04,700
+great.
+
+770
+00:40:06,700 --> 00:40:09,000
+Exactly. I think Jeremy you got a question.
+
+771
+00:40:11,200 --> 00:40:13,900
+Okay, beautiful. Okay an old one for Sasha?
+
+772
+00:40:15,500 --> 00:40:19,700
+So in terms of alternatives for economic recording
+
+773
+00:40:19,700 --> 00:40:22,400
+and what couple of people have been
+
+774
+00:40:22,400 --> 00:40:25,800
+doing it, they just were recording the player input and
+
+775
+00:40:25,800 --> 00:40:28,400
+they just enabled them to reconstruct the
+
+776
+00:40:28,400 --> 00:40:31,500
+scene afterwards, which would be even more spot to go. All she
+
+777
+00:40:31,500 --> 00:40:34,400
+need is the joystick accordingly if you have some, you
+
+778
+00:40:34,400 --> 00:40:37,200
+know, random variable generation that
+
+779
+00:40:37,200 --> 00:40:40,400
+you could also use random sees to fix them for each of
+
+780
+00:40:40,400 --> 00:40:43,300
+the trials. So have you explore this
+
+781
+00:40:43,300 --> 00:40:47,000
+option because even more yeah, I
+
+782
+00:40:46,500 --> 00:40:49,400
+definitely agree there. So that's one thing that I have considered. We
+
+783
+00:40:49,400 --> 00:40:53,300
+ultimately ruled it out for the sake of Simplicity and scope.
+
+784
+00:40:52,300 --> 00:40:55,400
+It's much easier to work with sort
+
+785
+00:40:55,400 --> 00:40:59,100
+of explicitly defined bits of data from my perspective, but
+
+786
+00:40:58,100 --> 00:41:01,400
+it is something I think that could be utilized effectively
+
+787
+00:41:01,400 --> 00:41:02,300
+in the future and
+
+788
+00:41:03,100 --> 00:41:06,700
+I would even add that. There's nothing within the existing architecture that
+
+789
+00:41:06,700 --> 00:41:09,400
+would prevent you from doing that. You would
+
+790
+00:41:09,400 --> 00:41:12,800
+still be able to with the well-defined tracker and reflection do
+
+791
+00:41:12,800 --> 00:41:16,800
+that input logging and input/output. You
+
+792
+00:41:15,800 --> 00:41:18,900
+just simply need to not write
+
+793
+00:41:18,900 --> 00:41:21,800
+like most the most of the examples. I showed you were trackers that
+
+794
+00:41:21,800 --> 00:41:24,300
+explicitly say it's going to be at this position at this time
+
+795
+00:41:24,300 --> 00:41:27,100
+and this rotation at this time, but you
+
+796
+00:41:27,100 --> 00:41:30,300
+don't have to record that you could just choose not to and it
+
+797
+00:41:30,300 --> 00:41:33,500
+said you could record the inputs and then in your reflection say when I when I
+
+798
+00:41:33,500 --> 00:41:36,700
+see these inputs execute these actions and so
+
+799
+00:41:36,700 --> 00:41:39,200
+that is another approach you can take just not one that I really
+
+800
+00:41:39,200 --> 00:41:42,400
+demonstrate or plan to investigate, you know within the semester I
+
+801
+00:41:42,400 --> 00:41:43,200
+have left, but thank you.
+
+802
+00:41:45,500 --> 00:41:48,700
+Of them. Well, what about the more complex affect animations?
+
+803
+00:41:48,700 --> 00:41:51,300
+Right? Because we said it's rotation and
+
+804
+00:41:51,300 --> 00:41:54,800
+position. So what if you have like animation transition which
+
+805
+00:41:54,800 --> 00:41:57,100
+here is not but if you have a
+
+806
+00:41:57,100 --> 00:42:00,200
+screen like some explosion happening the car accident or whatnot, right
+
+807
+00:42:00,200 --> 00:42:00,600
+or
+
+808
+00:42:01,300 --> 00:42:04,200
+A waterfall or a bird flying this flapping her
+
+809
+00:42:04,200 --> 00:42:06,400
+wings, that would not capture right now.
+
+810
+00:42:07,600 --> 00:42:10,000
+Yeah animation. So they're actually there are two
+
+811
+00:42:10,100 --> 00:42:13,300
+very interesting exceptions animation is one of them. So it's a
+
+812
+00:42:13,300 --> 00:42:17,800
+very good job. You can assess that out. The other one is Sound audio is
+
+813
+00:42:17,800 --> 00:42:20,900
+kind of an entirely different beast. And I
+
+814
+00:42:20,900 --> 00:42:23,200
+do want this software to eventually be compatible with both of those
+
+815
+00:42:23,200 --> 00:42:26,700
+those features because they can be really important. But the
+
+816
+00:42:26,700 --> 00:42:29,300
+way that you have to play them back is just fundamentally very different
+
+817
+00:42:29,300 --> 00:42:32,600
+so sound for example is something that only occurs
+
+818
+00:42:32,600 --> 00:42:35,300
+like only, you know begins at one point
+
+819
+00:42:35,300 --> 00:42:38,300
+in time. So if you scrub backwards in time, like when
+
+820
+00:42:38,300 --> 00:42:38,900
+do you know to
+
+821
+00:42:39,800 --> 00:42:42,300
+How was the sound going to play back? That's that's
+
+822
+00:42:42,300 --> 00:42:46,500
+a really complicated problem the isolate to think about a lot more and
+
+823
+00:42:45,500 --> 00:42:48,500
+then you know the follow-up to follow
+
+824
+00:42:48,500 --> 00:42:51,900
+that up with animation, which is a little bit easier right animation. Luckily is
+
+825
+00:42:51,900 --> 00:42:54,200
+is well, there are
+
+826
+00:42:54,200 --> 00:42:58,500
+many different ways to do animation, but you know luckily animation fundamentally
+
+827
+00:42:57,500 --> 00:43:01,200
+is just numerical states which
+
+828
+00:43:00,200 --> 00:43:03,200
+can still be played back. There's just
+
+829
+00:43:03,200 --> 00:43:06,300
+no native support for that. And so that problem will likely
+
+830
+00:43:06,300 --> 00:43:09,500
+be a little bit simpler to solve once I get around to you know, think about
+
+831
+00:43:09,500 --> 00:43:10,200
+that more in depth
+
+832
+00:43:13,400 --> 00:43:13,900
+Jerry
+
+833
+00:43:19,600 --> 00:43:19,800
+yeah.
+
+834
+00:43:40,400 --> 00:43:43,400
+So as with everything involved
+
+835
+00:43:43,400 --> 00:43:45,200
+me video games adding multiplayer.
+
+836
+00:43:46,400 --> 00:43:50,100
+Who gets complicated but the
+
+837
+00:43:49,100 --> 00:43:52,600
+nice thing is there is some degree
+
+838
+00:43:52,600 --> 00:43:56,300
+of like sort of innate
+
+839
+00:43:55,300 --> 00:43:58,900
+potential to handle that. So for
+
+840
+00:43:58,900 --> 00:44:01,500
+example, if you have different trackers recording different canvas
+
+841
+00:44:01,500 --> 00:44:04,500
+perspectives for all of you are multiplayer agents. Let's say
+
+842
+00:44:04,500 --> 00:44:07,500
+they're all playing on the same machine for simplicity's sake which they've likely
+
+843
+00:44:07,500 --> 00:44:10,100
+aren't honestly but let's say they're all playing on the same
+
+844
+00:44:10,100 --> 00:44:13,400
+machine. If you have those different camera perspectives, then you
+
+845
+00:44:13,400 --> 00:44:16,600
+can simply use the existing feature to swap between those perspectives
+
+846
+00:44:16,600 --> 00:44:20,100
+and apply visualization to them accordingly. If they're
+
+847
+00:44:19,100 --> 00:44:22,300
+playing across different machines. You got to
+
+848
+00:44:22,300 --> 00:44:25,600
+get creative. We still have the ability to import additional information.
+
+849
+00:44:25,600 --> 00:44:28,200
+So what you would likely
+
+850
+00:44:28,200 --> 00:44:31,400
+be doing is sort of the default information would be set to whatever
+
+851
+00:44:31,400 --> 00:44:34,200
+the default player is. So that perspective that
+
+852
+00:44:34,200 --> 00:44:37,300
+you're seeing of the Drone flying around if there are multiple drones. Let's say
+
+853
+00:44:37,300 --> 00:44:40,500
+then by default you would get the player one drone and you
+
+854
+00:44:40,500 --> 00:44:43,300
+have to be able to import you have to write your own sort
+
+855
+00:44:43,300 --> 00:44:45,200
+of custom import for additional multiplayer information.
+
+856
+00:44:46,500 --> 00:44:49,200
+Um, but yeah, it is multiplayers one of those things
+
+857
+00:44:49,200 --> 00:44:53,500
+where especially I know with with your lab
+
+858
+00:44:53,500 --> 00:44:55,000
+Dr. Gray, you know.
+
+859
+00:44:56,200 --> 00:44:59,400
+Very interesting and really kind of explodes the potential
+
+860
+00:44:59,400 --> 00:45:02,200
+complexity of this kind of software, but I
+
+861
+00:45:02,200 --> 00:45:04,800
+wanted to still be somewhat compatible at least.
+
+862
+00:45:08,800 --> 00:45:11,500
+So this project is so cool, like
+
+863
+00:45:11,500 --> 00:45:14,300
+being in the lab and like seeing you
+
+864
+00:45:14,300 --> 00:45:18,100
+guys you and Nate bill this it's a
+
+865
+00:45:17,100 --> 00:45:20,700
+tremendous and highly technically
+
+866
+00:45:20,700 --> 00:45:21,700
+challenging fee.
+
+867
+00:45:22,300 --> 00:45:25,800
+And so I guess I am more abstract question about are there
+
+868
+00:45:25,800 --> 00:45:27,400
+any particular hard lessons that you
+
+869
+00:45:28,900 --> 00:45:31,700
+'ve taken upon yourself as as
+
+870
+00:45:31,700 --> 00:45:33,000
+you've gone through this project.
+
+871
+00:45:37,400 --> 00:45:41,000
+Hmm. I have spent unreasonable amounts
+
+872
+00:45:40,100 --> 00:45:43,300
+of time agonizing over small bits
+
+873
+00:45:43,300 --> 00:45:46,400
+of code design and usability.
+
+874
+00:45:48,400 --> 00:45:51,500
+You know, I think I think that's probably the biggest Revelation that's come
+
+875
+00:45:51,500 --> 00:45:54,900
+is like out of this entire process is sort
+
+876
+00:45:54,900 --> 00:45:57,500
+of how to create a game systems
+
+877
+00:45:57,500 --> 00:46:00,800
+that are that are flexible that
+
+878
+00:46:00,800 --> 00:46:03,800
+make intuitive sense to users and that
+
+879
+00:46:03,800 --> 00:46:07,000
+will manifest themselves into actually like well-functioning
+
+880
+00:46:06,700 --> 00:46:09,500
+interfaces. You know, I've just on
+
+881
+00:46:09,500 --> 00:46:12,000
+the project you mentioned on this project. We've been sort of
+
+882
+00:46:12,500 --> 00:46:15,900
+reaping the consequences even just last night of small poor
+
+883
+00:46:15,900 --> 00:46:18,700
+decisions. I made in my design that you
+
+884
+00:46:18,700 --> 00:46:21,400
+know have like hours of consequence and time
+
+885
+00:46:21,400 --> 00:46:24,400
+waste and that's really really important for this kind of software. Right if one
+
+886
+00:46:24,400 --> 00:46:27,600
+feature is even a little bit poorly designed that creates
+
+887
+00:46:27,600 --> 00:46:30,400
+create hours of confusion waste tons of money tons
+
+888
+00:46:30,400 --> 00:46:33,400
+of time and so it's like super super important that
+
+889
+00:46:33,400 --> 00:46:36,600
+everything be like as easy and straightforward
+
+890
+00:46:36,600 --> 00:46:39,300
+as possible when things don't work. I want
+
+891
+00:46:39,300 --> 00:46:43,300
+the software to tell you why it doesn't work. You know, that's that's
+
+892
+00:46:42,300 --> 00:46:45,400
+another thing that I've been like trying to drill in.
+
+893
+00:46:45,400 --> 00:46:45,800
+So, yeah.
+
+894
+00:46:47,700 --> 00:46:48,000
+Oh.
+
+895
+00:46:50,900 --> 00:46:51,800
+You haven't gone yet.
+
+896
+00:46:54,400 --> 00:46:58,800
+Programming Paradigm.
+
+897
+00:46:58,800 --> 00:47:01,300
+I've had questions for my friends about this
+
+898
+00:47:01,300 --> 00:47:04,100
+in the past like what skills a paradigm.
+
+899
+00:47:04,700 --> 00:47:08,200
+Doesn't become useful and this
+
+900
+00:47:07,200 --> 00:47:10,400
+seems like a context where that's something you might considered.
+
+901
+00:47:10,600 --> 00:47:13,300
+Yeah, definitely. There are a lot of within the code structure.
+
+902
+00:47:14,700 --> 00:47:17,000
+A lot of the code is structured around sort of
+
+903
+00:47:17,400 --> 00:47:20,400
+a hierarchy of whether it's either hierarchies of
+
+904
+00:47:20,400 --> 00:47:22,200
+inheritance or hierarchies of sort of
+
+905
+00:47:24,500 --> 00:47:27,300
+Information management and so I try to isolate
+
+906
+00:47:27,300 --> 00:47:30,500
+as much as possible each subsystem and
+
+907
+00:47:30,500 --> 00:47:33,700
+its managerial tasks. I try
+
+908
+00:47:33,700 --> 00:47:36,600
+to leverage as intuitive as of inherent
+
+909
+00:47:36,600 --> 00:47:39,400
+inheritance structure as possible. Those are
+
+910
+00:47:39,400 --> 00:47:43,000
+sort of the two things that I'm like really thinking about the most because when
+
+911
+00:47:42,100 --> 00:47:45,500
+you write your custom code, I want you to be able to inherit what
+
+912
+00:47:45,500 --> 00:47:48,400
+already exists almost exactly copy and paste
+
+913
+00:47:48,400 --> 00:47:51,200
+the samples and just write the part
+
+914
+00:47:51,200 --> 00:47:54,200
+that you care about like, I want to see I want to see the
+
+915
+00:47:54,200 --> 00:47:57,100
+color change make the color change bam. It happens. Like that's what
+
+916
+00:47:57,100 --> 00:47:59,100
+I'm trying to go for here. So
+
+917
+00:48:00,500 --> 00:48:03,700
+so let's stop there. If you have additional
+
+918
+00:48:03,700 --> 00:48:06,600
+questions, please stick around and I'm sure savior will
+
+919
+00:48:06,600 --> 00:48:06,800
+be
+
+920
+00:48:08,700 --> 00:48:10,600
+Yes, thank you. Thank you.
